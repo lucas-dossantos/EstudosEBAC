@@ -14,7 +14,7 @@ public class Collections {
         Scanner scanner = new Scanner(System.in);
 
         while(true){
-            System.out.println("Informe o nome e o sexo separados por espaço(ou 'exit' para sair):");
+            System.out.println("Informe o nome e o sexo separados por hífen(ou 'exit' para sair):");
             String entrada = scanner.nextLine();
 
             if (entrada.equalsIgnoreCase("exit")){
