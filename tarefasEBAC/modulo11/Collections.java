@@ -21,7 +21,7 @@ public class Collections {
                 break;
             }
 
-            String[] partes = entrada.split("\\s");
+            String[] partes = entrada.split("-");
 
             if (partes.length == 2) {
                 String nome = partes[0];
