@@ -41,6 +41,4 @@ public class Collectionspt2 {
         System.out.println("Nomes femininos: " + nomesFemininos);
 
     }
-
-
 }
