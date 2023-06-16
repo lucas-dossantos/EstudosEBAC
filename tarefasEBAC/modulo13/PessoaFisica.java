@@ -1,5 +1,7 @@
 package tarefasEBAC.modulo13;
 
+import java.util.Scanner;
+
 public class PessoaFisica extends Pessoa {
 
         private String CPf;
@@ -39,11 +41,12 @@ public class PessoaFisica extends Pessoa {
 
     @Override
     public String toString() {
-        return "Nome: " + getNome() + "\n" +
+        return  "***************************" + "\n" +
+                "Nome: " + getNome() + "\n" +
                 "Telefone: " + getTelefone() + "\n" +
                 "E-mail: " + getEmail() + "\n" +
-                "CPF: " + CPf + "\n" +
-                "Data de nascimento: " + dataNascimento + "\n" +
-                "Sexo: " + sexo ;
+                "CPF: " + getCPf() + "\n" +
+                "Data de nascimento: " + getDataNascimento() + "\n" +
+                "Sexo: " + getSexo() ;
     }
 }

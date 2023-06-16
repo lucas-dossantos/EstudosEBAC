@@ -1,5 +1,7 @@
 package tarefasEBAC.modulo13;
 
+import java.util.Scanner;
+
 public class PessoaJuridica extends Pessoa {
 
     private String cnpj;
@@ -27,23 +29,24 @@ public class PessoaJuridica extends Pessoa {
     }
 
     public void setAtividade(String atividade) {
-        atividade = atividade;
+        this.atividade = atividade;
     }
 
     public PessoaJuridica(String nome, String telefone, String email, String cnpj, String dataAbertura, String atividade) {
         super(nome, telefone, email);
         this.cnpj = cnpj;
         this.dataAbertura = dataAbertura;
-        atividade = atividade;
+        this.atividade = atividade;
     }
 
     @Override
     public String toString() {
-        return "Nome: " + getNome() + "\n" +
+        return  "***************************" + "\n" +
+                "Nome: " + getNome() + "\n" +
                 "Telefone: " + getTelefone() + "\n" +
                 "E-mail: " + getEmail() + "\n" +
-                "CNPJ: " + cnpj + "\n" +
-                "Data de abertura: " + dataAbertura + "\n" +
-                "Atividade: " + atividade ;
+                "CNPJ: " + getCnpj() + "\n" +
+                "Data de abertura: " + getDataAbertura() + "\n" +
+                "Atividade: " + getAtividade() ;
     }
 }
