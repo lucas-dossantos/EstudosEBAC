@@ -1,6 +1,6 @@
 package tarefasEBAC.modulo13;
 
-public class Pessoa {
+public abstract class Pessoa {
 
         private String nome;
         private String telefone;
