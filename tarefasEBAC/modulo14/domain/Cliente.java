@@ -8,16 +8,16 @@ public class Cliente {
     private Long cpf;
     private Long telefone;
     private String endereco;
-    private Integer numero;
+    private Integer numeroEnd;
     private String cidade;
     private String estado;
 
-    public Cliente(String nome, String cpf, String telefone, String endereco, String numero, String cidade, String estado) {
+    public Cliente(String nome, String cpf, String telefone, String endereco, String numeroEnd, String cidade, String estado) {
         this.nome = nome;
         this.cpf = Long.valueOf(cpf.trim());
         this.telefone = Long.valueOf(telefone.trim());
         this.endereco = endereco;
-        this.numero = Integer.valueOf(numero.trim());
+        this.numeroEnd = Integer.valueOf(numeroEnd.trim());
         this.cidade = cidade;
         this.estado = estado;
     }
@@ -54,12 +54,12 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Integer getNumeroEnd() {
+        return numeroEnd;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setNumeroEnd(Integer numeroEnd) {
+        this.numeroEnd = numeroEnd;
     }
 
     public String getCidade() {
@@ -82,8 +82,8 @@ public class Cliente {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente client = (Cliente) o;
-        return Objects.equals(cpf, client.cpf);
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(cpf, cliente.cpf);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "Cliente{" +
                 "nome='" + nome + '\'' +
                 ", cpf=" + cpf +
                 '}';

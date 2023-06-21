@@ -1,6 +1,7 @@
 package tarefasEBAC.modulo14.domain;
 
-import tarefasEBAC.modulo14.dao.ClienteSetDAO;
+import tarefasEBAC.modulo14.dao.CienteSetDAO;
+import tarefasEBAC.modulo14.dao.ClienteMapDAO;
 import tarefasEBAC.modulo14.dao.IClienteDAO;
 
 import javax.swing.*;
@@ -11,129 +12,82 @@ public class App {
 
     public static void main(String[] args) {
 
-        iClienteDAO = new ClienteSetDAO();
+        iClienteDAO = new ClienteMapDAO();
 
-        String opcao = JOptionPane.showInputDialog(null,"Digite para:\n\n" +
-                "1. cadastrar cliente\n" +
-                "2. consultar cliente\n" +
-                "3. excluir cliente\n" +
-                "4. alterar cliente\n" +
-                "5. sair\n\n","CADASTRO DE CLIENTES", JOptionPane.INFORMATION_MESSAGE);
+        boolean rodando = true;// Sentinela para sair do laço de repetição;
 
-        while (isOpcaoValida(opcao)) {
-            if ("".equals(opcao)) {
-                sair();
-            }
-            opcao = JOptionPane.showInputDialog(null,"Digite para:\n\n" +
+        while (rodando) {
+            String opcao = JOptionPane.showInputDialog(null,"Digite para:\n\n" +
                     "1. cadastrar cliente\n" +
                     "2. consultar cliente\n" +
                     "3. excluir cliente\n" +
                     "4. alterar cliente\n" +
                     "5. sair\n\n","CADASTRO DE CLIENTES", JOptionPane.INFORMATION_MESSAGE);
-        }
 
-        while (isOpcaoValida(opcao)) {
-            if (isOpcaoSair(opcao)){
-                sair();
-            } else if (isCadastro(opcao)) {
-                String dados = JOptionPane.showInputDialog(null,"Informe os dados do cliente separados por vírgula, " +
-                     "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:", "CADASTRO",JOptionPane.INFORMATION_MESSAGE);
-                cadastrar(dados);
-            } else if (isConsultar(opcao)){
-                String dados = JOptionPane.showInputDialog(null,"informe o CPF do cliente", "CONSULTA",JOptionPane.INFORMATION_MESSAGE);
-                consultar(dados);
-            } else if (isExlusao(opcao)) {
-                String dados = JOptionPane.showInputDialog(null, "Digite o CPF do cliente", "EXCLUSÃO", JOptionPane.INFORMATION_MESSAGE);
-                excluir(dados);
-            } else {
-                String dados = JOptionPane.showInputDialog(null,"Informe os dados do cliente separados por vírgula, " +
-                        "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:", "CADASTRO",JOptionPane.INFORMATION_MESSAGE);
-                atualizar(dados);
+            switch (opcao) {
+                case "1" : {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "Informe os dados do cliente separados por vírgula, " +
+                            "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:",
+                            "CADASTRO",JOptionPane.INFORMATION_MESSAGE);
+                    cadastrar(dados);
+                    break;
+                }
+                case "2" : {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "informe o CPF do cliente", "CONSULTA",JOptionPane.INFORMATION_MESSAGE);
+                    consultar(dados);
+                    break;
+                }
+                case "3" : {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "informe o CPF do cliente", "EXCLUIR CLIENTE",JOptionPane.INFORMATION_MESSAGE);
+                    excluir(dados);
+                    break;
+                }
+                case "4" : {
+                    break;
+                }
+                case "5" : {
+                    JOptionPane.showMessageDialog(null,
+                            "Até logo!",null,JOptionPane.INFORMATION_MESSAGE);
+                    rodando = false;
+                }
             }
-            opcao = JOptionPane.showInputDialog(null,"Digite para:\n\n" +
-                    "1. cadastrar cliente\n" +
-                    "2. consultar cliente\n" +
-                    "3. excluir cliente\n" +
-                    "4. alterar cliente\n" +
-                    "5. sair\n\n","CADASTRO DE CLIENTES", JOptionPane.INFORMATION_MESSAGE);
         }
-    }
 
-    private static void atualizar(String dados) {
-        String[] dadosSeparados = dados.split(",");
-        Cliente cliente = new Cliente(dadosSeparados[0],dadosSeparados[1],dadosSeparados[2],dadosSeparados[3],dadosSeparados[4],dadosSeparados[5],dadosSeparados[6]);
-        iClienteDAO.alterar(cliente);
+
+
+
+
     }
 
     private static void excluir(String dados) {
-        iClienteDAO.excluir(Long.parseLong(dados));
-        JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso: ", null,JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    private static boolean isExlusao(String opcao) {
-        if ("3".equals(opcao)) {
-            return true;
-        }
-        return false;
+       iClienteDAO.excluir(Long.parseLong(dados));
+       JOptionPane.showInputDialog("Cliente excluído com secesso");
     }
 
     private static void consultar(String dados) {
-        String[] dadosSeparados = dados.split(",");
-        Cliente cliente = new Cliente(dadosSeparados[0],dadosSeparados[1],dadosSeparados[2],dadosSeparados[3],dadosSeparados[4],dadosSeparados[5],dadosSeparados[6]);
-        Boolean isCadastrado = iClienteDAO.cadastrar(cliente);
-        if (isCadastrado) {
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso", null,JOptionPane.INFORMATION_MESSAGE);
+        Cliente cliente = iClienteDAO.consultar(Long.parseLong(dados));
+        if (cliente != null) {
+            JOptionPane.showInputDialog(cliente.toString());
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente já cadastrado", "Erro",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showInputDialog("Cliente não encontrado");
         }
     }
-
-    private static boolean isConsultar(String opcao) {
-        if ("2".equals(opcao)) {
-            return true;
-        }
-        return false;
-    }
-
 
     private static void cadastrar(String dados) {
-        String[] dadosSeparados = dados.split(",");
-        Cliente cliente = new Cliente(dadosSeparados[0],dadosSeparados[1],dadosSeparados[2],dadosSeparados[3],dadosSeparados[4],dadosSeparados[5],dadosSeparados[6]);
-        Boolean isCadastrado = iClienteDAO.cadastrar(cliente);
-        if (isCadastrado) {
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso ", null,JOptionPane.INFORMATION_MESSAGE);
+        String[] dadosRecebidos = dados.split(",");
+        Cliente cliente = new Cliente(dadosRecebidos[0],dadosRecebidos[1],dadosRecebidos[2],dadosRecebidos[3],
+        dadosRecebidos[4],dadosRecebidos[5],dadosRecebidos[6]);
+        boolean cadastrado = iClienteDAO.cadastrar(cliente);
+        if (cadastrado ) {
+            JOptionPane.showMessageDialog(null,
+                    "Cliente cadastrado com sucesso", null,JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente já cadastrado", "Erro",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "Cliente já cadastrado", "Erro",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    private static boolean isCadastro(String opcao) {
-        if ("1".equals(opcao)) {
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean isOpcaoSair(String opcao) {
-        if ("5".equals(opcao)) {
-            return true;
-        }
-        return false;
-    }
-
-    private static void sair() {
-        String clientesCadastrados = "";
-        for (Cliente cliente : iClienteDAO.buscarTodos()) {
-            clientesCadastrados += cliente.toString() + "\n";
-        }
-        System.exit(0);
-    }
-
-    private static boolean isOpcaoValida(String opcao) {
-        if ("1".equals(opcao) || "2".equals(opcao) || "3".equals(opcao) || "4".equals(opcao) || "5".equals(opcao)) {
-            return true;
-        }
-        return false;
-    }
 }
-

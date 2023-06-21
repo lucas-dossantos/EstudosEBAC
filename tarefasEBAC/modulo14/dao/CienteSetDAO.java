@@ -6,17 +6,20 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ClienteSetDAO implements IClienteDAO {
+public class CienteSetDAO implements IClienteDAO {
 
     private Set<Cliente> set;
 
-    public  ClienteSetDAO() {
+    public void ClienteSetDAO() {
         this.set = new HashSet<>();
     }
+
+
     @Override
     public boolean cadastrar(Cliente cliente) {
         return this.set.add(cliente);
     }
+
 
     @Override
     public void excluir(Long cpf) {
@@ -36,11 +39,12 @@ public class ClienteSetDAO implements IClienteDAO {
     public void alterar(Cliente cliente) {
         if (this.set.contains(cliente)) {
             for (Cliente clienteCadastrado : this.set) {
-                if (clienteCadastrado.equals(cliente)){
+                if (clienteCadastrado.equals(cliente)) {
                     clienteCadastrado.setNome(cliente.getNome());
+                    clienteCadastrado.setCpf(cliente.getCpf());
                     clienteCadastrado.setTelefone(cliente.getTelefone());
                     clienteCadastrado.setEndereco(cliente.getEndereco());
-                    clienteCadastrado.setNumero(cliente.getNumero());
+                    clienteCadastrado.setNumeroEnd(cliente.getNumeroEnd());
                     clienteCadastrado.setCidade(cliente.getCidade());
                     clienteCadastrado.setEstado(cliente.getEstado());
                     break;

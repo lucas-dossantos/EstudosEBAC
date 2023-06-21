@@ -6,9 +6,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClienteMapDAO implements IClienteDAO {
+public class ClienteMapDAO implements IClienteDAO{
 
-    private Map<Long, Cliente>map;
+    private Map<Long, Cliente> map;
 
     public ClienteMapDAO() {
         this.map = new HashMap<>();
@@ -19,29 +19,26 @@ public class ClienteMapDAO implements IClienteDAO {
         if (this.map.containsKey(cliente.getCpf())) {
             return false;
         }
-        this.map.put(cliente.getCpf(), cliente);
+        this.map.put(cliente.getTelefone(), cliente);
         return true;
     }
 
     @Override
     public void excluir(Long cpf) {
         Cliente clienteCadastrado = this.map.get(cpf);
-        if (clienteCadastrado != null) {
-            this.map.remove(clienteCadastrado.getCpf(), clienteCadastrado);
-        }
+        this.map.remove(clienteCadastrado.getCpf(),clienteCadastrado);
     }
 
     @Override
     public void alterar(Cliente cliente) {
         Cliente clienteCadastrado = this.map.get(cliente.getCpf());
-        if (clienteCadastrado != null) {
-            clienteCadastrado.setNome(cliente.getNome());
-            clienteCadastrado.setTelefone(cliente.getTelefone());
-            clienteCadastrado.setNumero(cliente.getNumero());
-            clienteCadastrado.setEndereco(cliente.getEndereco());
-            clienteCadastrado.setCidade(cliente.getCidade());
-            clienteCadastrado.setEstado(cliente.getEstado());
-        }
+        clienteCadastrado.setNome(cliente.getNome());
+        clienteCadastrado.setCpf(cliente.getCpf());
+        clienteCadastrado.setTelefone(cliente.getTelefone());
+        clienteCadastrado.setEndereco(cliente.getEndereco());
+        clienteCadastrado.setNumeroEnd(cliente.getNumeroEnd());
+        clienteCadastrado.setCidade(clienteCadastrado.getCidade());
+        clienteCadastrado.setEstado(cliente.getEstado());
     }
 
     @Override
