@@ -1,6 +1,5 @@
 package tarefasEBAC.modulo14.domain;
 
-import tarefasEBAC.modulo14.dao.CienteSetDAO;
 import tarefasEBAC.modulo14.dao.ClienteMapDAO;
 import tarefasEBAC.modulo14.dao.IClienteDAO;
 
