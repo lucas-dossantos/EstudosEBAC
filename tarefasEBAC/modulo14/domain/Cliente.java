@@ -78,18 +78,18 @@ public class Cliente {
         this.estado = estado;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(cpf, cliente.cpf);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cpf);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Cliente cliente = (Cliente) o;
+//        return Objects.equals(cpf, cliente.cpf);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(cpf);
+//    }
 
     @Override
     public String toString() {

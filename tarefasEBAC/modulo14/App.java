@@ -1,9 +1,11 @@
-package tarefasEBAC.modulo14.domain;
+package tarefasEBAC.modulo14;
 
 import tarefasEBAC.modulo14.dao.ClienteMapDAO;
 import tarefasEBAC.modulo14.dao.IClienteDAO;
+import tarefasEBAC.modulo14.domain.Cliente;
 
 import javax.swing.*;
+
 
 public class App {
 
@@ -45,6 +47,11 @@ public class App {
                     break;
                 }
                 case "4" : {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "Informe os dados do cliente separados por vírgula, " +
+                                    "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:",
+                            "CADASTRO",JOptionPane.INFORMATION_MESSAGE);
+                    alterar(dados);
                     break;
                 }
                 case "5" : {
@@ -59,6 +66,13 @@ public class App {
 
 
 
+    }
+
+    private static void alterar(String dados) {
+        String[] dadosRecebidos = dados.split(",");
+        Cliente cliente = new Cliente(dadosRecebidos[0],dadosRecebidos[1],dadosRecebidos[2],dadosRecebidos[3],
+                dadosRecebidos[4],dadosRecebidos[5],dadosRecebidos[6]);
+        iClienteDAO.alterar(cliente);
     }
 
     private static void excluir(String dados) {
