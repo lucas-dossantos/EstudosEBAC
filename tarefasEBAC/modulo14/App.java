@@ -18,45 +18,45 @@ public class App {
         boolean rodando = true;// Sentinela para sair do laço de repetição;
 
         while (rodando) {
-            String opcao = JOptionPane.showInputDialog(null,"Digite para:\n\n" +
-                    "1. cadastrar cliente\n" +
-                    "2. consultar cliente\n" +
-                    "3. excluir cliente\n" +
-                    "4. alterar cliente\n" +
-                    "5. sair\n\n","CADASTRO DE CLIENTES", JOptionPane.INFORMATION_MESSAGE);
+            String opcao = JOptionPane.showInputDialog(null, """
+                    Digite para:
+
+                    1. cadastrar cliente
+                    2. consultar cliente
+                    3. excluir cliente
+                    4. alterar cliente
+                    5. sair
+
+                    ""","CADASTRO DE CLIENTES", JOptionPane.INFORMATION_MESSAGE);
 
             switch (opcao) {
-                case "1" : {
-                    String dados = JOptionPane.showInputDialog(null,
-                            "Informe os dados do cliente separados por vírgula, " +
-                            "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:",
-                            "CADASTRO",JOptionPane.INFORMATION_MESSAGE);
-                    cadastrar(dados);
-                    break;
-                }
-                case "2" : {
-                    String dados = JOptionPane.showInputDialog(null,
-                            "informe o CPF do cliente", "CONSULTA",JOptionPane.INFORMATION_MESSAGE);
-                    consultar(dados);
-                    break;
-                }
-                case "3" : {
-                    String dados = JOptionPane.showInputDialog(null,
-                            "informe o CPF do cliente", "EXCLUIR CLIENTE",JOptionPane.INFORMATION_MESSAGE);
-                    excluir(dados);
-                    break;
-                }
-                case "4" : {
+                case "1" -> {
                     String dados = JOptionPane.showInputDialog(null,
                             "Informe os dados do cliente separados por vírgula, " +
                                     "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:",
-                            "CADASTRO",JOptionPane.INFORMATION_MESSAGE);
-                    alterar(dados);
-                    break;
+                            "CADASTRO", JOptionPane.INFORMATION_MESSAGE);
+                    cadastrar(dados);
                 }
-                case "5" : {
+                case "2" -> {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "informe o CPF do cliente", "CONSULTA", JOptionPane.INFORMATION_MESSAGE);
+                    consultar(dados);
+                }
+                case "3" -> {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "informe o CPF do cliente", "EXCLUIR CLIENTE", JOptionPane.INFORMATION_MESSAGE);
+                    excluir(dados);
+                }
+                case "4" -> {
+                    String dados = JOptionPane.showInputDialog(null,
+                            "Informe os dados do cliente separados por vírgula, " +
+                                    "conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade, Estado:",
+                            "CADASTRO", JOptionPane.INFORMATION_MESSAGE);
+                    alterar(dados);
+                }
+                case "5" -> {
                     JOptionPane.showMessageDialog(null,
-                            "Até logo!",null,JOptionPane.INFORMATION_MESSAGE);
+                            "Até logo!", null, JOptionPane.INFORMATION_MESSAGE);
                     rodando = false;
                 }
             }

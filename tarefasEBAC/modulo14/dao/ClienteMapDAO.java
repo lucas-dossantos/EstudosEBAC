@@ -19,7 +19,7 @@ public class ClienteMapDAO implements IClienteDAO{
         if (this.map.containsKey(cliente.getCpf())) {
             return false;
         }
-        this.map.put(cliente.getTelefone(), cliente);
+        this.map.put(cliente.getCpf(), cliente);
         return true;
     }
 
