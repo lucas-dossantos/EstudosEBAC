@@ -1,14 +1,14 @@
-package tarefasEBAC.modulo17;
+package tarefasEBAC.modulo17.carros;
 
-public class Honda extends Carros{
+public class Wolkswagen extends Carros{
 
-    public Honda(String modelo, String anoFabricacao) {
+    public Wolkswagen(String modelo, String anoFabricacao) {
         super(modelo, anoFabricacao);
     }
 
     @Override
     public String toString() {
-        return "****** HONDA ******" +
+        return "\n****** WOLKSWAGEN ******" +
                 "\n[Modelo: " + getModelo() + "]" +
                 "\n[Ano de Fabricação: " + getAnoFabricacao() + "]";
     }
