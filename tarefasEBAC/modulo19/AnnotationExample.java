@@ -1,7 +1,5 @@
 package tarefasEBAC.modulo19;
 
-import java.lang.annotation.Annotation;
-
 @Tabela(value = "Tarefa EBAC")
 public class AnnotationExample {
 
