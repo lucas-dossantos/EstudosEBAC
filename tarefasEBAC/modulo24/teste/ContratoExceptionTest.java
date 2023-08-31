@@ -7,7 +7,6 @@ import tarefasEBAC.modulo24.dao.IContratoDao;
 import tarefasEBAC.modulo24.service.ContratoService;
 import tarefasEBAC.modulo24.service.IContratoService;
 
-import javax.swing.*;
 
 public class ContratoExceptionTest {
 
